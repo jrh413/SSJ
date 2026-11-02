@@ -3,7 +3,7 @@
 import 'jsr:@supabase/functions-js/edge-runtime.d.ts';
 import { createClient } from 'npm:@supabase/supabase-js@2.45.4';
 
-const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')!;
+const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY') ?? Deno.env.get('Resend-API-Key') ?? '';
 const FROM = 'School of Saint Joseph <noreply@formedtoserve.com>';
 const cors = {
   'Access-Control-Allow-Origin': '*',
