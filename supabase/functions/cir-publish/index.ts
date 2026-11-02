@@ -48,7 +48,7 @@ async function build(r: any): Promise<Uint8Array> {
   }
   page.drawLine({ start: { x: X, y: 70 }, end: { x: X + W, y: 70 }, thickness: 0.8, color: BRASS });
   page.drawText("Saturdays 7:00 AM - McDonald's, 1150 E Clark Ave, Orcutt (next door to St. Louis de Montfort)", { x: X, y: 52, size: 11, font: serif, color: INK });
-  page.drawText('Questions? Call or text Joe: (805) 456-0353', { x: X, y: 36, size: 11, font: serif, color: INK });
+  page.drawText('Questions? Call or text Joe: (805) 310-8740', { x: X, y: 36, size: 11, font: serif, color: INK });
   return await pdf.save();
 }
 
