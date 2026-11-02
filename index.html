@@ -581,6 +581,21 @@ body{-webkit-text-size-adjust:100%;overscroll-behavior:none}
 }
 </style>
 <style id="qc-fixes-2026-11">
+.menu-drawer{max-height:calc(100dvh - 40px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.hm-invite-btn{width:100%;min-height:52px;margin-top:10px;background:#6B1E1E;color:#FFF8EA;border:1px solid #9C7A34;border-radius:6px;font-size:18px;font-weight:700;font-family:inherit;cursor:pointer}
+.invite-ov{display:none;position:fixed;inset:0;z-index:9000;background:#1A1612;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.invite-ov.show{display:block}
+.inv-top{position:sticky;top:0;padding:calc(env(safe-area-inset-top) + 10px) 16px 10px;background:#1A1612;border-bottom:1px solid #3A2A10;text-align:left}
+.inv-back{position:static}
+.inv-body{max-width:520px;margin:0 auto;padding:20px 20px calc(env(safe-area-inset-bottom) + 30px);text-align:center}
+.inv-h{font-size:28px;font-weight:700;color:#F0C060;margin:6px 0 10px}
+.inv-p{font-size:19px;line-height:1.5;color:#F4EBD6;margin:0 0 20px}
+.inv-btn{display:block;width:100%;min-height:54px;margin:10px 0;background:#2A2016;color:#F4EBD6;border:1px solid #9C7A34;border-radius:6px;font-size:19px;font-weight:700;font-family:inherit;cursor:pointer}
+.inv-main{background:#C9A24A;color:#1A1612;border-color:#C9A24A;font-size:21px}
+.inv-row{display:flex;gap:10px}.inv-row .inv-btn{flex:1}
+.inv-qr-h{font-size:18px;color:#E3D3B0;margin:26px 0 12px}
+.inv-qr{width:240px;height:240px;background:#fff;padding:10px;border-radius:8px}
+.inv-url{font-size:18px;color:#F0C060;margin-top:10px;font-weight:700;word-break:break-all}
 .ev-doc-btn{display:inline-block;margin-top:10px;min-height:44px;padding:10px 16px;background:#6B1E1E;color:#FFF8EA;border:1px solid #9C7A34;border-radius:4px;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer}
 .event-card.ssj .ev-doc-btn{color:#FFF8EA!important}
 .event-card .event-meta,.cal-ssj-meta{white-space:pre-line}
@@ -718,6 +733,7 @@ body{-webkit-text-size-adjust:100%;overscroll-behavior:none}
       <div class="hm-actions">
         <button class="hm-tour-btn" id="home-tour-btn" onclick="startTour()">&#10016; Take the 1-Minute Tour</button>
         <button class="hm-video-btn" onclick="openVideo()">&#9654; Watch the App Video</button>
+        <button class="hm-invite-btn" onclick="openInvite()">&#10010; Invite a Brother</button>
       </div>
       <div class="section-head">NEXT FORMATION</div>
       <div id="formations-list"><div style="padding:20px;text-align:center;color:var(--ink-soft);font-style:italic;font-size:17px">Loading…</div></div>
@@ -1492,6 +1508,19 @@ body{-webkit-text-size-adjust:100%;overscroll-behavior:none}
 </div>
 
 <!-- DOCUMENT VIEWER (Nov 2026) -->
+<div id="invite-overlay" class="invite-ov" role="dialog" aria-label="Invite a Brother">
+  <div class="inv-top"><button class="ov-back inv-back" onclick="closeInvite()">&lsaquo; Back</button></div>
+  <div class="inv-body">
+    <div class="inv-h">Invite a Brother</div>
+    <p class="inv-p">Send him the app. He types his email, gets a 6-digit code, and he&rsquo;s in. No password.</p>
+    <button class="inv-btn inv-main" onclick="invShare()">&#10148; Share the App</button>
+    <div class="inv-row"><button class="inv-btn" onclick="invText()">Text It</button><button class="inv-btn" onclick="invEmail()">Email It</button></div>
+    <button class="inv-btn" id="inv-copy" onclick="invCopy()">Copy Link</button>
+    <div class="inv-qr-h">Standing next to him? Let him scan this:</div>
+    <img class="inv-qr" alt="QR code for the School of Saint Joseph app" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKCAIAAAD0S4FSAAAG0UlEQVR4Xu3dPc4sOxlGUQ5iBgQEzH9oBASMoREZkaV7H1nub5+18vpz9ZaTV9W/Pp/PX4CivxYfCvgfeUOWvCFL3pAlb8iSN2TJG7LkDVnyhix5Q5a8IUvekCVvyJI3ZMkbsuQNWfKGLHlDlrwh62/Lk/3zH39fDv9C//r3f/70XZ1X49WZl3d0vuflzGf31uonWlbD7g1Z8oYseUOWvCFL3pAlb8iSN2TJG7LkDVnT1NrZMm1zzzJrtRx7zzIttzzRq5m2Re83eWb3hix5Q5a8IUvekCVvyJI3ZMkbsuQNWfKGrItTa2fLvNTZvcmkZU7rJz7v4t5a3Xu/vXdk94YseUOWvCFL3pAlb8iSN2TJG7LkDVnyhqxnU2u/m2WKa7F8iW3x6rr8P7s3ZMkbsuQNWfKGLHlDlrwhS96QJW/IkjdkmVr7A5ZJrHvf8Tq7Ny13PvNy3XtfU/vd2L0hS96QJW/IkjdkyRuy5A1Z8oYseUOWvCHr2dTaT5xMunfPy5mXWbrv9OqJlrfwnezekCVvyJI3ZMkbsuQNWfKGLHlDlrwhS96QdXFq7dXXxe55NU21XPfesWevrrvcVY/dG7LkDVnyhix5Q5a8IUvekCVvyJI3ZMkbsn59Pp/sw32TV1Nc9/6p89VUYu+LaPfYvSFL3pAlb8iSN2TJG7LkDVnyhix5Q5a8IWv61tq9SaxXs1bLRNSrKa7vtLzBV5bf89m9M5/ZvSFL3pAlb8iSN2TJG7LkDVnyhix5Q5a8Ievit9aWKa5leuyVV5NJ99b53pkXr+7q3vu9d2a7N2TJG7LkDVnyhix5Q5a8IUvekCVvyJI3ZE3fWjt7NXn2aqrpbLmrZZ1fXXex3PPyjbfzscuZX7F7Q5a8IUvekCVvyJI3ZMkbsuQNWfKGLHlD1vSttXvfiFrmls6WWbp7z3u2rMa9531lmR67d+zyBpd3dGb3hix5Q5a8IUvekCVvyJI3ZMkbsuQNWfKGrC+dWlu8mvFaLPe8WKa4zu5NYi1rtdzVMrP46p7t3pAlb8iSN2TJG7LkDVnyhix5Q5a8IUvekDX9Q+gyA/TKcs8/cW7plVdr9Z3uTQee2b0hS96QJW/IkjdkyRuy5A1Z8oYseUOWvCFrmlq79wWpV2c+Txcts0f3puXOlusux37nGzxb7vnVmc/s3pAlb8iSN2TJG7LkDVnyhix5Q5a8IUvekDVNrZ1954zXMom1WL49tqzkMom1XPfVOp8tq3HPvbWye0OWvCFL3pAlb8iSN2TJG7LkDVnyhix5Q9avz+dz6eGWOa1lumiZtbrn3l3dO/Pi3iTW2fKru3fme7/nM7s3ZMkbsuQNWfKGLHlDlrwhS96QJW/IkjdkPfvW2mKZiFqOXWaPzu5Nnt173uXMZ/fW+Z5lWu7e89q9IUvekCVvyJI3ZMkbsuQNWfKGLHlDlrwha/rW2jKps7g35fNqEqs3tXbvt7GceTl2sfxil9+k3Ruy5A1Z8oYseUOWvCFL3pAlb8iSN2TJG7Kmb63dm7VaLFM+96aLlrs6W868PO8yAbZcd3nexfK8997gmd0bsuQNWfKGLHlDlrwhS96QJW/IkjdkyRuynn1r7dXc0r3rLlNNy7GLZTV+N6+m5RZ2b8iSN2TJG7LkDVnyhix5Q5a8IUvekCVvyJqm1n43y2zZvWPPllmr5Z7Plmm55YmWu3r1ZcHlee3ekCVvyJI3ZMkbsuQNWfKGLHlDlrwhS96QNf1D6DJ79J3OE0LL/NDZq/mw5Ynu3fPi3l0tZ35Vit0bsuQNWfKGLHlDlrwhS96QJW/IkjdkyRuypqm1s2Ui6p5X80PLWt2753tnfuU7f3XL21/YvSFL3pAlb8iSN2TJG7LkDVnyhix5Q5a8Ievi1NrZvXmpe3NL9+55+Y7Xss7LWi2rsfzb5nLdxbJWy7ELuzdkyRuy5A1Z8oYseUOWvCFL3pAlb8iSN2Q9m1r7iZZZq+XYV3Nar2bpzpYJsHsree/My/PavSFL3pAlb8iSN2TJG7LkDVnyhix5Q5a8IcvU2h/wnZNJ92bLlkm7ZdbqO91b53u/K7s3ZMkbsuQNWfKGLHlDlrwhS96QJW/IkjdkPZta+4lTTcs9LzNPy1TTcuxPdG+dX739hd0bsuQNWfKGLHlDlrwhS96QJW/IkjdkyRuyLk6t9eal7j3RvVmrs+Vraq8sa7W4d917Z7Z7Q5a8IUvekCVvyJI3ZMkbsuQNWfKGLHlD1q/P55N9OPi92b0hS96QJW/IkjdkyRuy5A1Z8oYseUOWvCFL3pAlb8iSN2TJG7LkDVnyhix5Q5a8IUvekCVvyPovxuY/tS0B2lwAAAAASUVORK5CYII=">
+    <div class="inv-url">school-of-st-joseph.netlify.app</div>
+  </div>
+</div>
 <div class="doc-viewer" id="doc-viewer">
   <div class="dv-bar">
     <button class="ov-back dv-back" onclick="closeDoc()">&lsaquo; Back</button>
@@ -3934,7 +3963,16 @@ function _tourOn(){ return document.getElementById('tour')?.classList.contains('
 // Header Back stays hidden on regular pages — the bottom menu is always there. Full-screen views (documents, video, photos, prayer, Serve detail) carry their own Back.
 function updateBackBtn(){ const b=document.getElementById('hdr-back'); if(b) b.classList.remove('show'); }
 function goBack(){ if(history.state && (history.state.tab||history.state.ov)) history.back(); else showTab('home',document.getElementById('nav-home')); }
-const _ovClose={'doc-viewer':()=>closeDoc(),'vid-overlay':()=>closeVideo(),'photo-lightbox':()=>closeLightbox(),
+// ── INVITE A BROTHER (Nov 2026) ──
+const INV_URL='https://school-of-st-joseph.netlify.app/';
+const INV_MSG="Brother, join us in the School of Saint Joseph app. Open the link, type your email, and enter the 6-digit code we send you. No password. Then save it to your Home Screen. ";
+function openInvite(){ document.getElementById('invite-overlay').classList.add('show'); }
+function closeInvite(){ document.getElementById('invite-overlay').classList.remove('show'); }
+async function invShare(){ if(navigator.share){ try{ await navigator.share({title:'School of Saint Joseph',text:INV_MSG,url:INV_URL}); }catch(e){} } else invCopy(); }
+function invText(){ location.href='sms:?&body='+encodeURIComponent(INV_MSG+INV_URL); }
+function invEmail(){ location.href='mailto:?subject='+encodeURIComponent('Join us in the SSJ app')+'&body='+encodeURIComponent(INV_MSG+'\n\n'+INV_URL); }
+async function invCopy(){ const b=document.getElementById('inv-copy'); try{ await navigator.clipboard.writeText(INV_MSG+INV_URL); b.textContent='Copied! Paste it into a text or email'; }catch(e){ b.textContent=INV_URL; } setTimeout(()=>{ b.textContent='Copy Link'; },4000); }
+const _ovClose={'invite-overlay':()=>closeInvite(),'doc-viewer':()=>closeDoc(),'vid-overlay':()=>closeVideo(),'photo-lightbox':()=>closeLightbox(),
   'prayer-overlay':()=>closePrayer(),'serve-detail':()=>closeServeDetail(),'tour':()=>endTour()};
 // One pop-up at a time: opening anything closes whatever was open, and takes its place in history.
 function _clearOv(keepTour){ let had=false; _navSilent=true;
@@ -3961,11 +3999,11 @@ window.addEventListener('popstate', e=>{
   window.showTab=function(name,btn){ const prev=_curTab; const r=_navSilent?false:_clearOv(true); _show(name,btn); _curTab=name; updateBackBtn();
     if(name!==prev && !_tourOn()) _navSet({tab:name},r); else if(r) { try{ history.replaceState({tab:name},''); }catch(e){} }
     const c=document.querySelector('#screen-app .app-content'); if(c && name!==prev) c.scrollTop=0; };
-  const openers={openVideo:'vid-overlay',openLightbox:'photo-lightbox',openPrayer:'prayer-overlay',openServeDetail:'serve-detail',startTour:'tour'};
+  const openers={openInvite:'invite-overlay',openVideo:'vid-overlay',openLightbox:'photo-lightbox',openPrayer:'prayer-overlay',openServeDetail:'serve-detail',startTour:'tour'};
   for (const [fn,id] of Object.entries(openers)) { const f=window[fn]; if(!f) continue;
     window[fn]=function(...a){ const was=_openOv(); if(was===id && id==='photo-lightbox') return f.apply(this,a);
       const rp=_clearOv(); const r=f.apply(this,a); _navSet({tab:_curTab,ov:id},rp); return r; }; }
-  const closers={closeVideo:'vid-overlay',closeLightbox:'photo-lightbox',closePrayer:'prayer-overlay',closeServeDetail:'serve-detail',endTour:'tour'};
+  const closers={closeInvite:'invite-overlay',closeVideo:'vid-overlay',closeLightbox:'photo-lightbox',closePrayer:'prayer-overlay',closeServeDetail:'serve-detail',endTour:'tour'};
   for (const [fn,id] of Object.entries(closers)) { const f=window[fn]; if(!f) continue;
     window[fn]=function(...a){ const top=!_navSilent && history.state?.ov===id; if(top) _navSilent=true; let r; try{ r=f.apply(this,a); } finally { if(top) _navSilent=false; } if(top) _btnBack(); return r; }; }
 })();
@@ -4012,6 +4050,7 @@ function closeDoc(){ document.getElementById('doc-viewer').classList.remove('sho
   <div class="menu-handle"></div>
 
   <div class="menu-section-label">BROTHERHOOD</div>
+  <div class="menu-item" onclick="closeMenu();openInvite()"><div class="menu-item-icon" style="background:rgba(240,192,96,.15)">&#10010;</div><div><div class="menu-item-label">Invite a Brother</div><div class="menu-item-sub">Share the app by text, email, or QR code</div></div></div>
   <div class="menu-item" onclick="closeMenu();startTour()"><div class="menu-item-icon" style="background:rgba(240,192,96,.15)">&#10016;</div><div><div class="menu-item-label">Take the Tour</div><div class="menu-item-sub">A one-minute walk through the app</div></div><div class="menu-item-arrow">&rsaquo;</div></div>
   <div class="menu-item" onclick="closeMenu();openRosterPanel()">
     <div class="menu-item-icon" style="background:rgba(45,58,42,.4);border:1px solid var(--forest-light)">⚔️</div>
