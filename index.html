@@ -3366,8 +3366,8 @@ async function loadCarousel() {
   // Replace logo with carousel
   const heroWrap = hero.parentElement;
   heroWrap.insertAdjacentHTML('afterbegin',`
-    <div id="carousel-wrap" style="width:100%;height:180px;position:relative;margin-bottom:12px;border-radius:6px;overflow:hidden;display:none">
-      <img id="carousel-img" style="width:100%;height:100%;object-fit:cover;transition:opacity .6s" src="" alt="">
+    <div id="carousel-wrap" style="width:100%;aspect-ratio:4/3;position:relative;margin-bottom:12px;border-radius:6px;overflow:hidden;display:none;background:#0E0A05">
+      <img id="carousel-img" style="width:100%;height:100%;object-fit:contain;transition:opacity .6s" src="" alt="">
       <div id="carousel-cap" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.7));padding:8px 10px;font-size:15px;color:#EAD9B8;font-style:italic"></div>
     </div>`);
   startCarousel();
