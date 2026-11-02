@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>School of Saint Joseph — Catholic Men's Brotherhood · Santa Maria Valley</title>
+<meta name="description" content="A brotherhood of Catholic men in the Santa Maria Valley growing in knowing, loving, and serving our LORD. Monthly formation at St. Mary of the Assumption.">
+<meta property="og:title" content="School of Saint Joseph">
+<meta property="og:description" content="A brotherhood of Catholic men growing in knowing, loving, and serving our LORD.">
+<meta property="og:image" content="assets/brothers.jpg">
+<meta name="theme-color" content="#1A1612">
+<link rel="icon" href="assets/crest.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1A1612;--ink2:#120E0A;--parch:#EFE6D2;--parch2:#F6EFDF;--cream:#F4EBD6;--gold:#F0C060;--brass:#C9A24A;--brass-d:#9C7A34;--ox:#6B1E1E;--text:#1A1612;--muted:#4A3C2C;--on-dark:#F5EDD8;--on-dark2:#E3D3B0}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--parch);color:var(--text);font-family:'EB Garamond',Georgia,serif;font-size:20px;line-height:1.6;-webkit-text-size-adjust:100%}
+img{max-width:100%;display:block}
+a{color:var(--ox)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'Cinzel',Georgia,serif;line-height:1.2;font-weight:700}
+h2{font-size:clamp(28px,4vw,40px);color:var(--ox);margin-bottom:14px;text-align:center}
+.kicker{font-family:'Cinzel',serif;font-size:16px;letter-spacing:.14em;color:var(--brass-d);text-align:center;text-transform:uppercase;margin-bottom:6px}
+.rule{display:flex;align-items:center;gap:14px;justify-content:center;color:var(--brass);margin:6px auto 26px;max-width:340px}
+.rule::before,.rule::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--brass))}
+.rule::after{background:linear-gradient(90deg,var(--brass),transparent)}
+section{padding:64px 0}
+.btn{display:inline-block;font-family:'Cinzel',serif;font-weight:700;font-size:18px;letter-spacing:.04em;text-decoration:none;border-radius:8px;padding:15px 26px;min-height:54px;text-align:center}
+.btn-gold{background:linear-gradient(180deg,#F4CE72,#D6A43E);color:var(--ink);border:1px solid #F7DC94;box-shadow:0 2px 0 #7A5A1E}
+.btn-line{border:2px solid var(--gold);color:var(--gold)}
+.btn-line.dark{border-color:var(--ink);color:var(--ink)}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:var(--ink);border-bottom:2px solid var(--brass)}
+.hd{display:flex;align-items:center;gap:14px;padding:10px 20px;max-width:1180px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:1;min-width:0}
+.brand img{width:40px;height:auto}
+.brand span{font-family:'Cinzel',serif;font-size:19px;font-weight:600;color:var(--gold);letter-spacing:.04em;line-height:1.15}
+nav.top{display:none;gap:22px}
+nav.top a{color:var(--on-dark);text-decoration:none;font-size:19px}
+nav.top a:hover{color:var(--gold)}
+.hd .btn{padding:10px 16px;min-height:44px;font-size:16px}
+@media(min-width:900px){nav.top{display:flex}}
+
+/* hero */
+.hero{position:relative;min-height:min(86vh,760px);display:flex;align-items:flex-end;color:var(--on-dark);background:#0D0906}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,9,6,.25) 0%,rgba(13,9,6,.55) 45%,rgba(13,9,6,.95) 100%)}
+.hero .in{position:relative;z-index:1;padding:120px 20px 56px;max-width:900px;margin:0 auto;text-align:center}
+.hero img.crest{width:84px;margin:0 auto 16px;filter:drop-shadow(0 0 18px rgba(240,192,96,.35))}
+.hero h1{font-size:clamp(34px,6vw,62px);color:var(--gold);letter-spacing:.04em;margin-bottom:12px}
+.hero p.lead{font-size:clamp(21px,2.6vw,26px);color:var(--on-dark);margin:0 auto 26px;max-width:720px}
+.hero .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hero .next{margin-top:22px;font-size:19px;color:var(--on-dark2)}
+.hero .next b{color:var(--gold)}
+
+/* who */
+.who p{max-width:780px;margin:0 auto 16px;font-size:21px}
+blockquote{max-width:760px;margin:26px auto 0;padding:22px 26px;background:var(--cream);border-left:6px solid var(--ox);border-radius:6px;font-style:italic;font-size:22px;color:var(--ox)}
+
+/* pillars */
+.pillars{display:grid;grid-template-columns:1fr;gap:16px;margin-top:10px}
+@media(min-width:760px){.pillars{grid-template-columns:repeat(3,1fr)}}
+.pill{background:var(--ink);color:var(--on-dark);border:1px solid var(--brass-d);border-radius:10px;padding:26px 22px;text-align:center}
+.pill h3{color:var(--gold);font-size:26px;margin-bottom:6px}
+.pill p{color:var(--on-dark2);font-size:19px}
+
+/* formation */
+.dark{background:var(--ink2);color:var(--on-dark)}
+.dark h2{color:var(--gold)}
+.dark .kicker{color:var(--brass)}
+.form-grid{display:grid;grid-template-columns:1fr;gap:26px;align-items:start}
+@media(min-width:900px){.form-grid{grid-template-columns:1.1fr .9fr}}
+.steps{list-style:none;counter-reset:s}
+.steps li{counter-increment:s;display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px solid #2E2010;font-size:20px}
+.steps li::before{content:counter(s);flex-shrink:0;width:42px;height:42px;border-radius:50%;border:1px solid var(--brass);color:var(--gold);font-family:'Cinzel',serif;font-weight:700;display:flex;align-items:center;justify-content:center}
+.steps b{color:var(--gold);font-family:'Cinzel',serif;font-weight:600;letter-spacing:.02em}
+.when{background:var(--cream);color:var(--text);border-radius:12px;padding:26px;border:1px solid var(--brass);box-shadow:0 0 0 5px var(--ink2),0 0 0 6px rgba(201,162,74,.5)}
+.when h3{color:var(--ox);font-size:24px;margin-bottom:12px}
+.when dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font-size:20px}
+.when dt{font-family:'Cinzel',serif;font-weight:700;color:var(--brass-d);font-size:16px;padding-top:4px}
+.when .next{margin-top:16px;padding-top:14px;border-top:1px solid #DACBA8;font-size:20px}
+.when .next b{color:var(--ox)}
+
+/* upcoming */
+.events{display:grid;grid-template-columns:1fr;gap:14px;max-width:900px;margin:0 auto}
+@media(min-width:760px){.events{grid-template-columns:1fr 1fr}}
+.ev{display:flex;gap:16px;background:var(--cream);border:1px solid var(--brass);border-left:6px solid var(--ox);border-radius:8px;padding:16px}
+.ev .dt{flex-shrink:0;width:70px;text-align:center;background:var(--ink);border:1px solid var(--brass-d);border-radius:8px;padding:6px 0 8px;font-family:'Cinzel',serif;line-height:1.05;color:var(--gold)}
+.ev .dt .m{font-size:15px}.ev .dt .d{font-size:30px;font-weight:700;color:#FFF8EA}.ev .dt .w{font-size:14px;color:var(--on-dark2)}
+.ev h3{font-family:'EB Garamond',serif;font-size:21px;font-weight:600;line-height:1.25;color:var(--text)}
+.ev p{font-size:18px;color:var(--muted);line-height:1.4;margin-top:4px}
+.ev-note{text-align:center;color:var(--muted);font-style:italic;margin-top:18px}
+
+/* parishes */
+.parishes{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:760px){.parishes{grid-template-columns:repeat(3,1fr)}}
+.par{background:var(--parch2);border:1px solid #DACBA8;border-radius:10px;padding:22px;text-align:center}
+.par h3{font-size:20px;color:var(--ox);margin-bottom:4px}
+.par p{font-size:18px;color:var(--muted)}
+
+/* patron */
+.patron{text-align:center}
+.patron p{max-width:760px;margin:0 auto 14px;font-size:21px}
+
+/* join */
+.join{background:var(--ink);color:var(--on-dark);text-align:center}
+.join h2{color:var(--gold)}
+.join p{max-width:700px;margin:0 auto 22px;font-size:21px;color:var(--on-dark)}
+.join .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+footer{background:#0D0906;color:var(--on-dark2);text-align:center;padding:30px 20px;font-size:17px;border-top:1px solid var(--brass-d)}
+footer .m{font-family:'Cinzel',serif;color:var(--gold);letter-spacing:.08em;margin-bottom:6px}
+.beta-flag{position:fixed;bottom:12px;left:12px;z-index:50;background:var(--ox);color:#FFF8EA;font-family:'Cinzel',serif;font-size:13px;letter-spacing:.08em;padding:6px 10px;border-radius:4px;opacity:.9}
+</style>
+</head>
+<body>
+<div class="beta-flag">BETA PREVIEW · NOT LIVE</div>
+
+<header>
+  <div class="hd">
+    <a class="brand" href="#top"><img src="assets/crest.png" alt=""><span>School of<br>Saint Joseph</span></a>
+    <nav class="top"><a href="#who">Who We Are</a><a href="#formation">Formation</a><a href="#upcoming">Upcoming</a><a href="#join">Join Us</a></nav>
+    <a class="btn btn-gold" href="https://school-of-st-joseph.netlify.app">Member Sign In</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <img class="bg" src="assets/brothers.jpg" alt="The brothers of the School of Saint Joseph at a monthly formation">
+  <div class="in">
+    <img class="crest" src="assets/crest-motto.png" alt="School of Saint Joseph crest">
+    <h1>School of Saint Joseph</h1>
+    <p class="lead">A brotherhood of Catholic men in the Santa Maria Valley, growing together in <b>knowing, loving, and serving</b> our LORD.</p>
+    <div class="ctas"><a class="btn btn-gold" href="#join">Come to a Formation</a><a class="btn btn-line" href="https://school-of-st-joseph.netlify.app">Member Sign In</a></div>
+    <p class="next">Next formation: <b>Wednesday, January 27, 2027 · 6:30 PM</b><br>St. Mary of the Assumption Parish Hall</p>
+  </div>
+</section>
+
+<section id="who" class="who">
+  <div class="wrap">
+    <div class="kicker">Who We Are</div>
+    <h2>Sons, Brothers, Husbands, Fathers, Grandfathers</h2>
+    <div class="rule">&#10016;</div>
+    <p>The School of Saint Joseph is a Catholic men&rsquo;s brotherhood formed to grow in knowing, loving, and serving our LORD. We are men who have heard the call to become who we were meant to be &mdash; and who refuse to walk that road alone.</p>
+    <p>We gather monthly for formation: food, fellowship, a talk, Lectio Divina, and prayer. We serve our parish, our priests, and our community. We hold each other accountable and remind each other that our identity is in CHRIST JESUS.</p>
+    <blockquote>&ldquo;To be encouraged by our brothers and to be an encouragement for our brothers. To remind and be reminded that our identity is in CHRIST JESUS.&rdquo;</blockquote>
+    <div class="pillars" style="margin-top:34px">
+      <div class="pill"><h3>Knowing</h3><p>The faith, deeply</p></div>
+      <div class="pill"><h3>Loving</h3><p>GOD and brother</p></div>
+      <div class="pill"><h3>Serving</h3><p>Parish and world</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="formation" class="dark">
+  <div class="wrap">
+    <div class="kicker">Monthly Formation</div>
+    <h2>One Evening a Month</h2>
+    <div class="rule">&#10016;</div>
+    <div class="form-grid">
+      <ol class="steps">
+        <li><div><b>Report</b> &mdash; Break into groups, opening prayer</div></li>
+        <li><div><b>Food &amp; Fellowship</b> &mdash; Share a meal, share your life</div></li>
+        <li><div><b>Formation Talk</b> &mdash; A brother speaks into our lives</div></li>
+        <li><div><b>Lectio Divina</b> &mdash; The Gospel of the coming Sunday</div></li>
+        <li><div><b>Closing Prayer</b> &mdash; Hail Mary, together</div></li>
+      </ol>
+      <div class="when">
+        <h3>When &amp; Where</h3>
+        <dl>
+          <dt>WHEN</dt><dd>4th Wednesday of the month, January&ndash;October</dd>
+          <dt>TIME</dt><dd>6:30 &ndash; 8:40 PM</dd>
+          <dt>WHERE</dt><dd>St. Mary of the Assumption Parish Hall, Santa Maria</dd>
+          <dt>COST</dt><dd>Nothing. We&rsquo;ll feed you.</dd>
+        </dl>
+        <div class="next">Next: <b>Wednesday, January 27, 2027</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="upcoming">
+  <div class="wrap">
+    <div class="kicker">Upcoming</div>
+    <h2>Pray With Us</h2>
+    <div class="rule">&#10016;</div>
+    <div class="events" id="events"><p class="ev-note">Loading upcoming gatherings&hellip;</p></div>
+    <p class="ev-note">Every gathering is open to men of the parish. Members see the full calendar in the app.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">Our Parishes</div>
+    <h2>Three Parishes, One Brotherhood</h2>
+    <div class="rule">&#10016;</div>
+    <div class="parishes">
+      <div class="par"><h3>St. Mary of the Assumption</h3><p>Santa Maria &middot; where SSJ began</p></div>
+      <div class="par"><h3>St. Louis de Montfort</h3><p>Orcutt</p></div>
+      <div class="par"><h3>Our Lady of Guadalupe</h3><p>Guadalupe</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="patron dark">
+  <div class="wrap">
+    <div class="kicker">Our Patron</div>
+    <h2>Saint Joseph</h2>
+    <div class="rule">&#10016;</div>
+    <p>Husband of Mary, foster father of JESUS, head of the Holy Family, and Patron of a Happy Death. He gave his last breath in the arms of JESUS and Mary &mdash; he knows what it is to be a man of GOD to the very end.</p>
+    <p style="font-style:italic;color:var(--gold)">Saint Joseph, pray for us.</p>
+  </div>
+</section>
+
+<section id="join" class="join">
+  <div class="wrap">
+    <h2>Come and See</h2>
+    <div class="rule">&#10016;</div>
+    <p>New to SSJ? You don&rsquo;t need to sign up. Just come to a formation &mdash; bring yourself, we&rsquo;ll take care of the rest. Questions? Ask for <b>Joe Halsell</b> or <b>Tom O&rsquo;Malley</b> after Mass.</p>
+    <p>Already a brother? Sign in to the app for the calendar, Tasking Orders, After Action Reports, and photos.</p>
+    <div class="ctas"><a class="btn btn-gold" href="https://school-of-st-joseph.netlify.app">Member Sign In</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="m">School of Saint Joseph</div>
+  <div>Ad Jesum per Mariam &middot; Santa Maria Valley, California</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+(async function(){
+  const el=document.getElementById('events');
+  const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  try{
+    const sb=supabase.createClient('https://qlgrkkzukpkraxoataqf.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFsZ3Jra3p1a3BrcmF4b2F0YXFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg4MjEzNjAsImV4cCI6MjA5NDM5NzM2MH0.u63rrghP0IntOKmQAmV-0VcEC08YiQ5d-muHLIA57kg',{auth:{persistSession:false}});
+    const today=new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);
+    const {data,error}=await sb.from('ssj_events').select('title,event_date,start_time,location,description').gte('event_date',today).order('event_date').limit(6);
+    if(error||!data?.length){ el.innerHTML='<p class="ev-note">Upcoming gatherings will be posted here soon.</p>'; return; }
+    el.innerHTML=data.map(e=>{const dt=new Date(e.event_date+'T12:00:00'); const loc=(e.location||'').split(/[,—]/)[0].trim();
+      return `<div class="ev"><div class="dt"><div class="m">${dt.toLocaleDateString('en-US',{month:'short'}).toUpperCase()}</div><div class="d">${dt.getDate()}</div><div class="w">${dt.toLocaleDateString('en-US',{weekday:'short'})}</div></div><div><h3>${esc(e.title)}</h3><p>${[e.start_time,loc].filter(Boolean).map(esc).join(' &middot; ')}</p></div></div>`}).join('');
+  }catch(e){ el.innerHTML='<p class="ev-note">Upcoming gatherings will be posted here soon.</p>'; }
+})();
+</script>
+</body>
+</html>
