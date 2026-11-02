@@ -4,7 +4,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="app-version" content="1793600100">
+<meta name="app-version" content="1793600200">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>SSJ — School of Saint Joseph</title>
@@ -473,6 +473,42 @@ body{-webkit-text-size-adjust:100%;overscroll-behavior:none}
 .si-ok{background:none;border:none;padding:0 0 12px;color:#BFE3C5;text-align:center}
 @media (min-width:600px){.si-wrap{margin-top:5vh}}
 </style>
+<style id="home-tour-2026-11">
+.hm-empty{padding:16px;text-align:center;color:#6B5A44;font-size:18px;font-style:italic}
+.hm-ev{display:flex;gap:14px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--parchment-deep);cursor:pointer;background:var(--parchment)}
+.hm-ev-date{flex-shrink:0;width:64px;text-align:center;background:var(--ink);border:1px solid #9C7A34;border-radius:8px;padding:6px 0 7px;color:#F0C060;font-family:'Cinzel',serif;line-height:1.05}
+.hm-ev-date .m{font-size:15px;letter-spacing:.06em}.hm-ev-date .d{font-size:28px;font-weight:700;color:#FFF8EA}.hm-ev-date .w{font-size:14px;color:#E3D3B0}
+.hm-ev-t{font-family:'EB Garamond',serif;font-size:20px;font-weight:600;color:#1A1612;line-height:1.25}
+.hm-ev-s{font-size:17px;color:#4A3C2C;margin-top:3px;line-height:1.3}
+.hm-cal-btn{display:block;width:calc(100% - 32px);margin:12px 16px 16px;min-height:54px;font-family:'Cinzel',serif;font-size:18px;font-weight:700;letter-spacing:.03em;border-radius:6px;border:2px solid #1A1612;background:transparent;color:#1A1612;cursor:pointer}
+.hm-aar{display:flex;gap:14px;align-items:center;margin:14px 16px 16px;padding:16px;border-radius:8px;background:var(--ink);border:1px solid #9C7A34;text-decoration:none;box-shadow:0 0 0 4px var(--parchment),0 0 0 5px rgba(156,122,52,.5)}
+.hm-aar-icon{flex-shrink:0;width:52px;height:52px;border-radius:50%;border:1px solid #C9A24A;color:#F0C060;font-size:24px;display:flex;align-items:center;justify-content:center}
+.hm-aar-title{font-family:'Cinzel',serif;font-size:18px;font-weight:600;color:#F0C060;line-height:1.3}
+.hm-aar-sub{font-size:17px;color:#E3D3B0;margin-top:4px}
+.hm-actions{display:flex;flex-direction:column;gap:10px;padding:4px 16px 18px}
+.hm-tour-btn,.hm-video-btn{min-height:56px;font-family:'Cinzel',serif;font-size:18px;font-weight:700;letter-spacing:.03em;border-radius:6px;cursor:pointer}
+.hm-tour-btn{border:1px solid #F7DC94;background:linear-gradient(180deg,#F4CE72,#D6A43E);color:#1A1612;box-shadow:0 2px 0 #7A5A1E}
+.hm-video-btn{border:2px solid #1A1612;background:transparent;color:#1A1612}
+.tour{position:fixed;inset:0;z-index:400;display:none}
+.tour.show{display:block}
+.tour-spot{position:fixed;border-radius:10px;border:2px solid #F0C060;box-shadow:0 0 0 9999px rgba(10,7,4,.84),0 0 24px rgba(240,192,96,.45);transition:all .35s ease;pointer-events:none}
+.tour-card{position:fixed;left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:440px;background:linear-gradient(180deg,#221810,#140F0A);border:1px solid #9C7A34;border-radius:12px;padding:18px 20px 16px;box-shadow:0 0 0 4px #0F0B07,0 0 0 5px rgba(201,162,74,.45),0 16px 40px rgba(0,0,0,.6)}
+.tour-card.mid{top:50%;bottom:auto;transform:translate(-50%,-50%)}
+.tour-step{font-family:'Cinzel',serif;font-size:15px;color:#C9A24A;letter-spacing:.08em;margin-bottom:6px}
+.tour-h{font-family:'Cinzel',serif;font-size:25px;font-weight:700;color:#F0C060;margin:0 0 8px;line-height:1.2}
+.tour-p{font-family:'EB Garamond',serif;font-size:21px;line-height:1.45;color:#F5EDD8;margin:0 0 16px}
+.tour-btns{display:flex;gap:12px;align-items:center}
+.tour-skip{flex:0 0 auto;background:none;border:none;color:#E3D3B0;font-family:'EB Garamond',serif;font-size:19px;text-decoration:underline;padding:12px 8px;cursor:pointer}
+.tour-next{flex:1;min-height:54px}
+.vid-overlay{position:fixed;inset:0;z-index:420;background:rgba(5,3,2,.94);display:none;align-items:center;justify-content:center;padding:16px}
+.vid-overlay.show{display:flex}
+.vid-box{width:100%;max-width:420px;display:flex;flex-direction:column;gap:12px}
+.vid-box video{width:100%;max-height:78vh;border-radius:10px;border:1px solid #9C7A34;background:#000}
+/* admin Go Deeper editor was never hidden; it sat below the app and could be scrolled into view on iPhones */
+.role-modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:200;padding:20px}
+.role-modal.show{display:flex}
+.role-modal-inner{background:#1C1510;border:1px solid var(--brass);border-radius:8px;padding:22px;max-height:90vh;overflow:auto}
+</style>
 </head>
 <body>
 
@@ -586,6 +622,18 @@ body{-webkit-text-size-adjust:100%;overscroll-behavior:none}
           <div class="home-three-word">Loving</div>
           <div class="home-three-word">Serving</div>
         </div>
+      </div>
+      <div class="section-head" id="home-coming-head">COMING UP</div>
+      <div id="home-coming-up"><div class="hm-empty">Loading…</div></div>
+      <button class="hm-cal-btn" onclick="openEventsPanel()">See the Full Calendar &rsaquo;</button>
+      <div class="section-head">AFTER ACTION REPORT</div>
+      <a class="hm-aar" id="home-aar" href="aar/2026-11-after-action-report.pdf" target="_blank" rel="noopener">
+        <div class="hm-aar-icon">&#10016;</div>
+        <div><div class="hm-aar-title">Formations for November &amp; December 2026</div><div class="hm-aar-sub">From Tom O&rsquo;Malley &middot; tap to open</div></div>
+      </a>
+      <div class="hm-actions">
+        <button class="hm-tour-btn" id="home-tour-btn" onclick="startTour()">&#10016; Take the 1-Minute Tour</button>
+        <button class="hm-video-btn" onclick="openVideo()">&#9654; Watch the App Video</button>
       </div>
       <div class="section-head">NEXT FORMATION</div>
       <div id="formations-list"><div style="padding:20px;text-align:center;color:var(--ink-soft);font-style:italic;font-size:17px">Loading…</div></div>
@@ -1107,6 +1155,7 @@ body{-webkit-text-size-adjust:100%;overscroll-behavior:none}
           <option value="saint_day">Saint Day</option>
           <option value="social">Social / Brotherhood</option>
           <option value="retreat">Retreat</option>
+          <option value="prayer">Prayer &amp; Mass</option>
         </select>
         <label class="admin-label">Date</label>
         <input class="admin-input" id="ev-date" type="date">
@@ -1332,6 +1381,27 @@ body{-webkit-text-size-adjust:100%;overscroll-behavior:none}
         READ ABOUT SSJ FIRST ›
       </button>
     </div>
+  </div>
+</div>
+
+<!-- APP TOUR -->
+<div class="tour" id="tour">
+  <div class="tour-spot" id="tour-spot"></div>
+  <div class="tour-card" id="tour-card">
+    <div class="tour-step" id="tour-step"></div>
+    <h3 class="tour-h" id="tour-h"></h3>
+    <p class="tour-p" id="tour-p"></p>
+    <div class="tour-btns">
+      <button class="tour-skip" onclick="endTour()">Skip</button>
+      <button class="si-btn tour-next" id="tour-next" onclick="tourNext()">Next</button>
+    </div>
+  </div>
+</div>
+<!-- APP VIDEO -->
+<div class="vid-overlay" id="vid-overlay" onclick="if(event.target===this)closeVideo()">
+  <div class="vid-box">
+    <video id="vid-el" controls playsinline preload="none" poster="media/ssj-app-tour-poster.jpg"><source src="media/ssj-app-tour.mp4" type="video/mp4"></video>
+    <button class="si-btn" onclick="closeVideo()">Close</button>
   </div>
 </div>
 
@@ -1564,6 +1634,64 @@ async function saveWelcome() {
   set(); window.addEventListener('resize',set); window.addEventListener('orientationchange',()=>setTimeout(set,300));
   window.visualViewport && window.visualViewport.addEventListener('resize',set); })();
 
+
+// ── HOME: COMING UP (Nov 2026) ───────────────────────────────
+function escH(t){ return String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+async function loadComingUp() {
+  const el=document.getElementById('home-coming-up'); if(!el) return;
+  const today=new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);
+  const [ev,fm]=await Promise.all([
+    sb.from('ssj_events').select('*').gte('event_date',today).order('event_date').limit(8),
+    sb.from('ssj_formations').select('*').gte('formation_date',today).order('formation_date').limit(4)
+  ]);
+  const items=[...(ev.data||[]).map(e=>({d:e.event_date,t:e.title,time:e.start_time,loc:e.location})),
+               ...(fm.data||[]).map(f=>({d:f.formation_date,t:f.title||'Formation',time:f.start_time,loc:f.location}))]
+    .sort((a,b)=>a.d.localeCompare(b.d)).slice(0,4);
+  if(!items.length){ el.innerHTML='<div class="hm-empty">No upcoming events posted yet.</div>'; return; }
+  el.innerHTML=items.map(i=>{ const dt=new Date(i.d+'T12:00:00'); const loc=(i.loc||'').split(/[,—]/)[0].trim();
+    return `<div class="hm-ev" onclick="openEventsPanel()"><div class="hm-ev-date"><div class="m">${dt.toLocaleDateString('en-US',{month:'short'}).toUpperCase()}</div><div class="d">${dt.getDate()}</div><div class="w">${dt.toLocaleDateString('en-US',{weekday:'short'})}</div></div><div class="hm-ev-body"><div class="hm-ev-t">${escH(i.t)}</div><div class="hm-ev-s">${[i.time,loc].filter(Boolean).map(escH).join(' &middot; ')}</div></div></div>`; }).join('');
+}
+
+// ── APP TOUR (Nov 2026) ───────────────────────────────────────
+const TOUR=[
+  {h:'Welcome, Brother', p:'Here is a one-minute tour of your School of Saint Joseph app. Tap Next to walk through it.'},
+  {sel:'#home-coming-head', also:'#home-coming-up', home:true, h:'Coming Up', p:'The next gatherings are always right here on Home. Tap any one to see the details.'},
+  {sel:'#home-aar', home:true, h:'After Action Report', p:'The latest report from Tom &mdash; formations, Masses, and what&rsquo;s next. One tap opens it.'},
+  {sel:'#nav-formations', h:'Formation', p:'The next formation and every Tasking Order, all in one place.'},
+  {sel:'#nav-serve', h:'Serve', p:'Sign up to bring food, set up, or lend a hand when the brotherhood serves.'},
+  {sel:'#nav-about', h:'About', p:'Who we are, our model, and why we gather.'},
+  {sel:'#nav-more', h:'More', p:'The brothers roster, photos, Go Deeper, the calendar, and your account.'},
+  {sel:'#panel-events .events-header', also:'#events-list-view', act:()=>openEventsPanel(), h:'The Calendar', p:'Every formation, Mass, and feast day. Tap CALENDAR to see the whole month.'},
+  {act:()=>showTab('home',document.getElementById('nav-home')), h:'You&rsquo;re All Set', p:'See you at the next formation. You can take this tour again anytime from Home.'}
+];
+let _tourI=0;
+function startTour(){ _tourI=0; showTab('home',document.getElementById('nav-home')); document.getElementById('tour').classList.add('show'); tourShow(); }
+function endTour(){ document.getElementById('tour').classList.remove('show'); try{localStorage.setItem('ssj_tour_v1','1');}catch(e){} showTab('home',document.getElementById('nav-home')); const c=document.querySelector('#panel-home'); if(c) c.closest('.app-content')?.scrollTo(0,0); }
+function tourNext(){ if(_tourI>=TOUR.length-1) return endTour(); _tourI++; tourShow(); }
+function tourShow(){
+  const st=TOUR[_tourI], spot=document.getElementById('tour-spot'), card=document.getElementById('tour-card');
+  if (st.home) showTab('home',document.getElementById('nav-home'));
+  if (st.act) st.act();
+  document.getElementById('tour-step').textContent=`${_tourI+1} of ${TOUR.length}`;
+  document.getElementById('tour-h').innerHTML=st.h; document.getElementById('tour-p').innerHTML=st.p;
+  document.getElementById('tour-next').textContent=_tourI===TOUR.length-1?'Finish':'Next';
+  const el=st.sel&&document.querySelector(st.sel);
+  if (el && !el.closest('.app-nav')) el.scrollIntoView({block:'start',behavior:'smooth'});
+  setTimeout(()=>{
+    const vh=window.innerHeight;
+    if(!el){ spot.style.cssText='left:50%;top:45%;width:0;height:0'; card.style.top=''; card.style.bottom=''; card.className='tour-card mid'; return; }
+    let r=el.getBoundingClientRect(); let top=r.top,bot=r.bottom,left=r.left,right=r.right;
+    if(st.also){ const a=document.querySelector(st.also); if(a){const q=a.getBoundingClientRect(); top=Math.min(top,q.top); bot=Math.max(bot,q.bottom); left=Math.min(left,q.left); right=Math.max(right,q.right);} }
+    top=Math.max(top,6); bot=Math.min(bot, top+vh*0.42, vh-6);
+    spot.style.cssText=`left:${left-6}px;top:${top-6}px;width:${right-left+12}px;height:${bot-top+12}px`;
+    card.className='tour-card';
+    if ((top+bot)/2 > vh/2) { card.style.top=''; card.style.bottom=(vh-top+18)+'px'; }
+    else { card.style.bottom=''; card.style.top=(bot+18)+'px'; }
+  }, 420);
+}
+function openVideo(){ document.getElementById('vid-overlay').classList.add('show'); const v=document.getElementById('vid-el'); try{v.play();}catch(e){} }
+function closeVideo(){ const v=document.getElementById('vid-el'); v.pause(); document.getElementById('vid-overlay').classList.remove('show'); }
+
 // ── PROFILE & SETUP ───────────────────────────────────────────
 let _loadingUserId = null;
 async function loadProfile(user, attempt=0) {
@@ -1600,8 +1728,10 @@ function setupApp() {
   document.getElementById('home-greeting').textContent    = `Welcome, ${currentProfile.full_name.split(' ')[0]}`;
   showScreen('screen-app');
   checkFirstLogin();
+  setTimeout(()=>{ try { if (!localStorage.getItem('ssj_tour_v1')) startTour(); } catch(e){} }, 1500);
   setTimeout(() => {
     loadFormations().catch(e=>console.warn('formations:',e));
+    loadComingUp().catch(e=>console.warn('comingUp:',e));
     loadMembers().catch(e=>console.warn('members:',e));
     loadDocs().catch(e=>console.warn('docs:',e));
     loadServe().catch(e=>console.warn('serve:',e));
@@ -2883,6 +3013,7 @@ function renderEventsList() {
     formation: { label:'FORMATION', color:'var(--oxblood-text)', bg:'#1A0A0A' },
     serve:     { label:'SERVICE', color:'#4ACAAA', bg:'#0A1A1A' },
     social:    { label:'SOCIAL', color:'#6AAAEA', bg:'#0A0A1A' },
+    prayer:    { label:'PRAYER & MASS', color:'#E8C677', bg:'#1A1208' },
     retreat:   { label:'RETREAT', color:'#CA6A6A', bg:'#1A0A0A' },
     general:   { label:'EVENT', color:'var(--brass-text)', bg:'#1A1208' },
   };
@@ -3686,6 +3817,7 @@ async function doForgotPassword() {
   <div class="menu-handle"></div>
 
   <div class="menu-section-label">BROTHERHOOD</div>
+  <div class="menu-item" onclick="closeMenu();startTour()"><div class="menu-item-icon" style="background:rgba(240,192,96,.15)">&#10016;</div><div><div class="menu-item-label">Take the Tour</div><div class="menu-item-sub">A one-minute walk through the app</div></div><div class="menu-item-arrow">&rsaquo;</div></div>
   <div class="menu-item" onclick="closeMenu();openRosterPanel()">
     <div class="menu-item-icon" style="background:rgba(45,58,42,.4);border:1px solid var(--forest-light)">⚔️</div>
     <div><div class="menu-item-label">Brothers Roster</div><div class="menu-item-sub">All Corporals of SSJ</div></div>
