@@ -3227,7 +3227,7 @@ function renderCalDayEvents(dateStr) {
     <div style="padding:8px 0;border-bottom:1px solid #1A1208">
       <div style="font-family:'Cinzel',serif;font-size:15px;color:var(--body-on-dark)">${e.title}</div>
       ${e.time?`<div style="font-size:15px;color:var(--muted-on-dark)">${e.time}</div>`:''}
-      ${e.desc?`<div style="font-size:15px;color:var(--muted-on-dark);font-style:italic;margin-top:2px">${e.desc}</div>`:''}
+      ${e.desc?`<div style="font-size:15px;color:var(--muted-on-dark);font-style:italic;margin-top:2px;white-space:pre-line">${e.desc}</div>`:''}
     </div>`).join('');
 }
 
