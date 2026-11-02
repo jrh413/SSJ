@@ -236,7 +236,7 @@ footer .m{font-family:'Cinzel',serif;color:var(--gold);letter-spacing:.08em;marg
   try{
     const sb=supabase.createClient('https://qlgrkkzukpkraxoataqf.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFsZ3Jra3p1a3BrcmF4b2F0YXFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg4MjEzNjAsImV4cCI6MjA5NDM5NzM2MH0.u63rrghP0IntOKmQAmV-0VcEC08YiQ5d-muHLIA57kg',{auth:{persistSession:false}});
     const today=new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);
-    const {data,error}=await sb.from('ssj_events').select('title,event_date,start_time,location,description').gte('event_date',today).order('event_date').limit(6);
+    const {data,error}=await sb.from('ssj_events').select('title,event_date,start_time,location,description').neq('event_type','recovery').gte('event_date',today).order('event_date').limit(6);
     if(error||!data?.length){ el.innerHTML='<p class="ev-note">Upcoming gatherings will be posted here soon.</p>'; return; }
     el.innerHTML=data.map(e=>{const dt=new Date(e.event_date+'T12:00:00'); const loc=(e.location||'').split(/[,—]/)[0].trim();
       return `<div class="ev"><div class="dt"><div class="m">${dt.toLocaleDateString('en-US',{month:'short'}).toUpperCase()}</div><div class="d">${dt.getDate()}</div><div class="w">${dt.toLocaleDateString('en-US',{weekday:'short'})}</div></div><div><h3>${esc(e.title)}</h3><p>${[e.start_time,loc].filter(Boolean).map(esc).join(' &middot; ')}</p></div></div>`}).join('');

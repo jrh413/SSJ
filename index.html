@@ -4,7 +4,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="app-version" content="1793600500">
+<meta name="app-version" content="1793600600">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>SSJ — School of Saint Joseph</title>
@@ -1238,6 +1238,7 @@ body{-webkit-text-size-adjust:100%;overscroll-behavior:none}
           <option value="social">Social / Brotherhood</option>
           <option value="retreat">Retreat</option>
           <option value="prayer">Prayer &amp; Mass</option>
+          <option value="recovery">Catholic in Recovery</option>
         </select>
         <label class="admin-label">Date</label>
         <input class="admin-input" id="ev-date" type="date">
@@ -1733,12 +1734,14 @@ async function loadComingUp() {
   const el=document.getElementById('home-coming-up'); if(!el) return;
   const today=new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);
   const [ev,fm]=await Promise.all([
-    sb.from('ssj_events').select('*').gte('event_date',today).order('event_date').limit(8),
+    sb.from('ssj_events').select('*').gte('event_date',today).order('event_date').limit(30),
     sb.from('ssj_formations').select('*').gte('formation_date',today).order('formation_date').limit(4)
   ]);
   const items=[...(ev.data||[]).map(e=>({d:e.event_date,t:e.title,time:e.start_time,loc:e.location})),
                ...(fm.data||[]).map(f=>({d:f.formation_date,t:f.title||'Formation',time:f.start_time,loc:f.location}))]
-    .sort((a,b)=>a.d.localeCompare(b.d)).slice(0,4);
+    .sort((a,b)=>a.d.localeCompare(b.d))
+    .filter((i,n,arr)=>arr.findIndex(j=>j.t===i.t)===n) // weekly groups show once (next date only)
+    .slice(0,4);
   if(!items.length){ el.innerHTML='<div class="hm-empty">No upcoming events posted yet.</div>'; return; }
   el.innerHTML=items.map(i=>{ const dt=new Date(i.d+'T12:00:00'); const loc=(i.loc||'').split(/[,—]/)[0].trim();
     return `<div class="hm-ev" onclick="openEventsPanel()"><div class="hm-ev-date"><div class="m">${dt.toLocaleDateString('en-US',{month:'short'}).toUpperCase()}</div><div class="d">${dt.getDate()}</div><div class="w">${dt.toLocaleDateString('en-US',{weekday:'short'})}</div></div><div class="hm-ev-body"><div class="hm-ev-t">${escH(i.t)}</div><div class="hm-ev-s">${[i.time,loc].filter(Boolean).map(escH).join(' &middot; ')}</div></div></div>`; }).join('');
@@ -3108,6 +3111,7 @@ function renderEventsList() {
     prayer:    { label:'PRAYER & MASS', color:'#E8C677', bg:'#1A1208' },
     retreat:   { label:'RETREAT', color:'#CA6A6A', bg:'#1A0A0A' },
     general:   { label:'EVENT', color:'var(--brass-text)', bg:'#1A1208' },
+    recovery:  { label:'CATHOLIC IN RECOVERY', color:'var(--brass-text)', bg:'#1A1208' },
   };
 
   el.innerHTML = Object.entries(byMonth).map(([month, events]) => {
