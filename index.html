@@ -1001,7 +1001,7 @@ body{-webkit-text-size-adjust:100%;overscroll-behavior:none}
               <label class="admin-label">Venmo Handle</label>
               <input class="admin-input" id="serve-venmo" placeholder="e.g. SSJ-SanDiego (no @)">
               <label class="admin-label">Zelle Contact</label>
-              <input class="admin-input" id="serve-zelle" placeholder="e.g. 805-456-0353 or email">
+              <input class="admin-input" id="serve-zelle" placeholder="e.g. 805-310-8740 or email">
               <label class="admin-label">Fund Goal ($)</label>
               <input class="admin-input" id="serve-fund" type="number" placeholder="e.g. 300">
             </div>
@@ -2510,7 +2510,7 @@ async function sendFormationReminders() {
   if (!eligible.length) { alert('No members with SMS consent and phone number on file yet.'); if (btn) { btn.disabled=false; btn.textContent='📱 SEND FORMATION REMINDERS'; } return; }
   const messages=eligible.map(m=>({
     to:m.phone,
-    body:`Brother ${m.full_name.split(' ')[0]}, formation is ${fmtDate(f.formation_date)}${f.start_time?' at '+f.start_time:''}${f.location?' — '+f.location:''}. Ad Jesum per Mariam. — SSJ (805) 456-0353`
+    body:`Brother ${m.full_name.split(' ')[0]}, formation is ${fmtDate(f.formation_date)}${f.start_time?' at '+f.start_time:''}${f.location?' — '+f.location:''}. Ad Jesum per Mariam. — SSJ (805) 310-8740`
   }));
   const result=await sendSMS(messages);
   const okEl=document.getElementById('reminder-ok');
