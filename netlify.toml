@@ -1,0 +1,10 @@
+# School of Saint Joseph app — Netlify settings
+# No build step: the site is the single index.html in this folder.
+[build]
+  publish = "."
+  command = ""
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache"
