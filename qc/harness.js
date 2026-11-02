@@ -40,7 +40,7 @@ async function check(tag){
   if(!d.getElementById('screen-app').classList.contains('active') && !d.getElementById('screen-serve-detail').classList.contains('active')) bad.push('left app: '+d.querySelector('.screen.active')?.id);
   if(act.length!==1) bad.push('active panels='+act.length);
   const ovs=openOvs().filter(o=>o!=='menu-drawer'); if(ovs.length>1) bad.push('stacked overlays '+ovs.join('+'));
-  const b=d.getElementById('hdr-back'); if(!ovs.length && !!b?.classList.contains('show')!==(w._curTab!=='home')) bad.push('back btn mismatch on '+w._curTab);
+  const b=d.getElementById('hdr-back'); if(b?.classList.contains('show')) bad.push('header back showing on '+w._curTab);
   if(act[0] && act[0].id!=='panel-'+w._curTab) bad.push('tab state '+w._curTab+' vs '+act[0].id);
   return bad;
 }

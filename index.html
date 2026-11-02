@@ -3922,7 +3922,8 @@ let _backPending=false, _queuedPush=null;
 function navPush(st){ if(_navSilent) return; if(_backPending){ _queuedPush=st; return; } try{ history.pushState(st,''); }catch(e){} }
 function _btnBack(){ _backPending=true; history.back(); setTimeout(()=>{ if(_backPending){ _backPending=false; if(_queuedPush){ try{history.pushState(_queuedPush,'');}catch(e){} _queuedPush=null; } } },400); }
 function _tourOn(){ return document.getElementById('tour')?.classList.contains('show'); }
-function updateBackBtn(){ const b=document.getElementById('hdr-back'); if(b) b.classList.toggle('show', _curTab!=='home'); }
+// Header Back stays hidden on regular pages — the bottom menu is always there. Full-screen views (documents, video, photos, prayer, Serve detail) carry their own Back.
+function updateBackBtn(){ const b=document.getElementById('hdr-back'); if(b) b.classList.remove('show'); }
 function goBack(){ if(history.state && (history.state.tab||history.state.ov)) history.back(); else showTab('home',document.getElementById('nav-home')); }
 const _ovClose={'doc-viewer':()=>closeDoc(),'vid-overlay':()=>closeVideo(),'photo-lightbox':()=>closeLightbox(),
   'prayer-overlay':()=>closePrayer(),'serve-detail':()=>closeServeDetail(),'tour':()=>endTour()};
