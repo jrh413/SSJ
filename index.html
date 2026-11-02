@@ -581,6 +581,8 @@ body{-webkit-text-size-adjust:100%;overscroll-behavior:none}
 }
 </style>
 <style id="qc-fixes-2026-11">
+.ev-doc-btn{display:inline-block;margin-top:10px;min-height:44px;padding:10px 16px;background:#6B1E1E;color:#FFF8EA;border:1px solid #9C7A34;border-radius:4px;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer}
+.event-card.ssj .ev-doc-btn{color:#FFF8EA!important}
 .event-card .event-meta,.cal-ssj-meta{white-space:pre-line}
 .hbadge-corporal{background:rgba(201,162,74,.18);border:1px solid #C9A24A;color:#F0C060}
 .signout-btn{color:#FFE3E0!important;border:2px solid #E8706A!important;background:#4A1414!important;min-height:52px;font-size:18px!important;font-weight:700}
@@ -3060,7 +3062,7 @@ async function loadEvents() {
   // DB events
   (dbEventsRes.data||[]).forEach(e => allEvents.push({
     id: e.id, title: e.title, date: e.event_date, type: e.event_type,
-    desc: e.description, location: e.location, time: e.start_time, source: 'db'
+    desc: e.description, location: e.location, time: e.start_time, url: e.url, source: 'db'
   }));
 
   // Formations
@@ -3142,6 +3144,7 @@ function renderEventsList() {
           <div class="event-date-badge">${dayLabel}${e.time?' · '+e.time:''}</div>
           ${e.location?`<div class="event-meta">📍 ${e.location}</div>`:''}
           ${e.desc?`<div class="event-meta" style="margin-top:4px">${e.desc}</div>`:''}
+          ${e.url&&String(e.url).startsWith('doc:')?`<button class="ev-doc-btn" data-path="${escH(e.url.slice(4))}" data-title="Weekly Reflection — ${escH(e.title)}" onclick="event.stopPropagation();openEvDoc(this.dataset.path,this.dataset.title)">&#128196; This Week&rsquo;s Reflection</button>`:''}
           ${e.source==='db'&&currentProfile?.role==='admin'?`<div style="display:flex;gap:8px;margin-top:6px">
             <button onclick="editEvent('${e.id}')" style="background:none;border:1px solid #3A2A10;color:var(--muted-on-dark);font-size:14px;font-family:'Cinzel',serif;padding:2px 8px;border-radius:2px;cursor:pointer">✎ Edit</button>
             <button onclick="deleteEvent('${e.id}')" style="background:none;border:none;color:var(--oxblood-text);font-size:15px;cursor:pointer;padding:0">✕ Remove</button>
@@ -3223,6 +3226,7 @@ function renderCalDayEvents(dateStr) {
       <div class="cal-ssj-title">${e.title}</div>
       ${e.time||e.location?`<div class="cal-ssj-meta">${[e.time,e.location].filter(Boolean).join(' &middot; ')}</div>`:''}
       ${e.desc?`<div class="cal-ssj-meta" style="margin-top:4px">${e.desc}</div>`:''}
+      ${e.url&&String(e.url).startsWith('doc:')?`<button class="ev-doc-btn" data-path="${escH(e.url.slice(4))}" data-title="Weekly Reflection — ${escH(e.title)}" onclick="event.stopPropagation();openEvDoc(this.dataset.path,this.dataset.title)">&#128196; This Week&rsquo;s Reflection</button>`:''}
     </div>` : `
     <div style="padding:8px 0;border-bottom:1px solid #1A1208">
       <div style="font-family:'Cinzel',serif;font-size:15px;color:var(--body-on-dark)">${e.title}</div>
@@ -3997,6 +4001,7 @@ async function openDoc(url,title){
     pg.innerHTML=`<div class="dv-msg">This document couldn&rsquo;t be shown here.<br><br><a class="si-btn" style="display:inline-block;width:auto;padding:14px 24px;text-decoration:none" href="${url}" target="_blank" rel="noopener">Open the Document</a></div>`;
   }
 }
+async function openEvDoc(path,title){ try{ const {data,error}=await sb.storage.from('ssj-documents').createSignedUrl(path,3600); if(error||!data) throw error; openDoc(data.signedUrl,title); }catch(e){ alert('Could not open the reflection. Please try again.'); } }
 function closeDoc(){ document.getElementById('doc-viewer').classList.remove('show'); if(!_navSilent && history.state?.ov==='doc-viewer') _btnBack(); }
 
 </script>

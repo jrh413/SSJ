@@ -27,6 +27,7 @@ def fixtures(role='brother', new_man=False):
     events = [dict(id=uid(200+i), title=t, event_date=d, end_date=None, start_time=tm, end_time=None, location=l,
                    description='Description text for testing. ' * 3, event_type=ty, url=None, created_by=ME, created_at='2026-11-02T00:00:00Z')
               for i, (t, d, tm, l, ty) in enumerate(ev)]
+    events += [dict(id=uid(260+i), title='Catholic in Recovery', event_date=d, end_date=None, start_time='7:00 AM', end_time=None, location="McDonald's, 1150 E Clark Ave, Orcutt 93455", description='12 steps in the light of Church tradition. Questions? Call or text Joe: (805) 456-0353', event_type='recovery', url=('doc:recovery/2026-11-07-cir-reflection.pdf' if i==0 else None), created_by=ME, created_at='2026-11-02T00:00:00Z') for i, d in enumerate(['2026-11-07','2026-11-14','2026-11-21','2026-11-28'])]
     forms = [dict(id=uid(300), tasking_order='2026-016', title='Monthly Formation — October 28, 2026', formation_date='2026-10-28', start_time='6:30 PM', end_time='8:40 PM',
                   location='St. Mary of the Assumption Parish Hall', description='Normal Formation.', visible_to='apprentice', created_at='2026-05-15T00:00:00Z'),
              dict(id=uid(301), tasking_order=None, title='Monthly Formation — January 27, 2027', formation_date='2027-01-27', start_time='6:30 PM', end_time='8:40 PM',
